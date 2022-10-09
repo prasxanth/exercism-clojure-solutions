@@ -3,7 +3,7 @@
 My solutions to problems in [Exercism's](https://exercism.org/tracks/clojure) [Clojure](https://clojure.org/) track.
 
 |                           :title | :difficulty |    :type |
-|----------------------------------+-------------+----------|
+|----------------------------------|-------------|----------|
 |                      Hello World |        easy | tutorial |
 |        Lucian's Luscious Lasagna |        easy |  concept |
 |       Tracks on Tracks on Tracks |        easy |  concept |
