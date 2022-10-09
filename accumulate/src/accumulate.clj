@@ -1,7 +1,7 @@
 (ns accumulate)
 
-(defn accumulate [func coll]
-  (loop [coll (reverse coll) res '[]]
-    (if (empty? coll)
+(defn accumulate [f coll]
+  (loop [[x & xs] coll res []]
+    (if (nil? x)
       res
-      (recur (rest coll) (cons (-> coll first func) res)))))
+      (recur xs (conj res (f x))))))
