@@ -1,17 +1,10 @@
 (ns collatz-conjecture)
 
-(defn- conditions [number]
-  (cond 
-   (> 1 number) (throw (IllegalArgumentException. "zero is an error"))
-   (even? number) (quot number 2)
-   (odd? number) (->> (* number 3) inc)
-   (= 1 number) 1))
+(defn rules [n]
+  (if (even? n) (/ n 2) (-> n (* 3) inc)))
 
-(defn- series [number]
- (if (= 1 number) [1]
-  (cons number (->> number conditions series))))
- 
-(defn collatz [number]
- (->> number series count dec))
-
-
+(defn collatz [n]
+  (cond
+    (< n 1) (throw (IllegalArgumentException. "Number cannot be less than 1"))
+    (= n 1) 0
+    :else (->> (iterate rules n) (take-while #(not= 1 %)) count)))
