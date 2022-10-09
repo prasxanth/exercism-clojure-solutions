@@ -2,7 +2,7 @@
 
 My solutions to problems in [Exercism's](https://exercism.org/tracks/clojure) [Clojure](https://clojure.org/) track.
 
-|                           :title | :difficulty |    :type |
+|                           Title  |  Difficulty |     Type |
 |----------------------------------|-------------|----------|
 |                      Hello World |        easy | tutorial |
 |        Lucian's Luscious Lasagna |        easy |  concept |
