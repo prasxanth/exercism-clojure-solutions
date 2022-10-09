@@ -1,6 +1,6 @@
 (ns binary)
 
-(defn- binary->decimal [digits]
+(defn binary->decimal [digits]
   (reduce #(+ (* 2 %1) %2) 0 digits))
 
 (defn to-decimal [numstr]
