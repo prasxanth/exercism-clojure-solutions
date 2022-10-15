@@ -1,10 +1,8 @@
 (ns etl
   (:require [clojure.string :as str]))
 
-;; bmaddy's solution
+(defn transform [scores]
+  (reduce (fn [m [k vs]]
+              (into m (map #(assoc m (str/lower-case %) k) vs)))
+          {} scores))
 
-(defn transform [m]
-  (into {}
-        (for [[score letters] m
-              letter letters]
-          [(str/lower-case letter) score])))
