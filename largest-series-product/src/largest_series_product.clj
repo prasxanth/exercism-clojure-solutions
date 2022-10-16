@@ -1,11 +1,14 @@
 (ns largest-series-product)
 
-(defn largest-product [n digits]
-  (let [ds (->> digits char-array seq (map #(Character/digit % 10)) (map bigint))]
+(defn str->digits [digits-str]
+  (->> digits-str (map #(Character/digit % 10)) (map bigint)))
+
+(defn largest-product [span digits-str]
+  (let [ds (str->digits digits-str)]
     (cond
-      (and (pos? n) (empty? digits)) (throw (Exception. "Number string cannot be empty"))
-      (empty? digits) 1
-      (neg? n) (throw (Exception. "Partition cannot be negative"))
+      (zero? span) 1
+      (empty? digits-str) (throw (Exception. "Number string cannot be empty"))
+      (neg? span) (throw (Exception. "Span cannot be negative"))
       (some neg? ds) (throw (Exception. "Number string should only contain digits"))
-      :else (->> ds (partition n 1) (map #(reduce * %)) (apply max)))))
-;;
+      :else (->> ds (partition span 1) (map #(reduce * %)) (apply max)))))
+
