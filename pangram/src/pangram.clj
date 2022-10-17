@@ -1,10 +1,10 @@
-(ns pangram)
+(ns pangram
+  (:require [clojure.string :as str]))
 
-(require '[clojure.string :as str])
+(defn pangram? [sentence]
+  (->> sentence
+       str/lower-case
+       (map int)
+       set
+       (#(every? % (range 97 123)))))
 
-(def lower-case-alphabet (->> (range 97 123) (map char) set))
-(defn pangram? [sentence] ;; <- arglist goes here
-  (-> sentence
-    str/lower-case
-    set
-    (every? lower-case-alphabet)))
