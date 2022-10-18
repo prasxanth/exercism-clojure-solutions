@@ -1,6 +1,5 @@
 (ns sublist)
 
-
 (defn sublist? [xs ys]
   {:pre (<= (count xs) (count ys))}
   (->> (partition (count xs) 1 ys)
