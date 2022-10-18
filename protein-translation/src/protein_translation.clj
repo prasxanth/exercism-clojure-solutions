@@ -1,6 +1,5 @@
-(ns protein-translation)
-
-(require '[clojure.string :as str])
+(ns protein-translation
+  (:require [clojure.string :as str]))
 
 (def translate-codon {"AUG" "Methionine"
                       "UUU" "Phenylalanine"
@@ -20,9 +19,8 @@
                       "UAG" "STOP"
                       "UGA" "STOP"})
 
-
-(defn translate-rna [rna] 
+(defn translate-rna [rna]
   (->> rna
-     (partition 3)
-     (map (comp translate-codon str/join))
-     (take-while #(not= "STOP" %))))
+       (partition 3)
+       (map (comp translate-codon str/join))
+       (take-while #(not= "STOP" %))))
